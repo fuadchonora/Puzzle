@@ -86,7 +86,8 @@ shufleTiles = () => {
 moveTile = (tile) => {
     tileNo = tile.html();
     let tempPos = tile.position();
-    if( (tempPos.left+tempPos.top == freeTilePos.x+freeTilePos.y-100) || (tempPos.left+tempPos.top == freeTilePos.x+freeTilePos.y+100) ){
+    if(     ( ((tempPos.left == freeTilePos.x-100) || (tempPos.left == freeTilePos.x+100)) && (tempPos.top == freeTilePos.y) ) || 
+            ( ((tempPos.top == freeTilePos.y-100) || (tempPos.top == freeTilePos.y+100)) && (tempPos.left == freeTilePos.x) ) ){
         disableUI();
         console.log('moving tile '+tileNo);
         document.getElementById("tile-"+tileNo).style.transform = "translate("+freeTilePos.x+"px, "+freeTilePos.y+"px)";

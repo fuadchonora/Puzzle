@@ -88,15 +88,15 @@ moveTile = (tile) => {
     let tempPos = tile.position();
     if(     ( ((tempPos.left == freeTilePos.x-100) || (tempPos.left == freeTilePos.x+100)) && (tempPos.top == freeTilePos.y) ) || 
             ( ((tempPos.top == freeTilePos.y-100) || (tempPos.top == freeTilePos.y+100)) && (tempPos.left == freeTilePos.x) ) ){
-        disableUI();
+        //disableUI();
         console.log('moving tile '+tileNo);
         document.getElementById("tile-"+tileNo).style.transform = "translate("+freeTilePos.x+"px, "+freeTilePos.y+"px)";
         freeTilePos.x = tempPos.left;
         freeTilePos.y = tempPos.top;
+        setTimeout(function(){
+            checkStatus();
+        },500);
     }
-    setTimeout(function(){
-        checkStatus();
-    },500);
 }
 
 enableUI = () => {

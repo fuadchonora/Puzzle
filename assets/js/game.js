@@ -30,7 +30,6 @@ initMatrix = () => {
                 matrix[idR][idC] = null;
                 return;
             }
-            //console.log(idR+' '+idC+' :'+sliderNumber);
             matrix[idR][idC] = tileNo;
             tileNo++;
         }
@@ -82,8 +81,6 @@ shufleTiles = () => {
 
     containerTitle.html('Slide It & Win');
     enableUI();
-    console.log(posSet);
-    console.log(posSetTemp)
 }
 
 moveTile = (tile) => {
@@ -115,20 +112,18 @@ checkStatus = () => {
     let status = false;
     $('.tile').each(function(){
         let tile = $(this)
-        console.log(parseInt(tile.html())-1);
+
         let pos = tile.position();
         let val = (pos.top*5/100)+(pos.left/100);
         val = Math.round(val);
-        console.log('val:'+val);
+
         if( parseInt(tile.html()) !== (val+1) ){
-            console.log('LOOOSSEEE...');
             status = false;
             return false;
         }
         status = true;
     })
     if(status == true){
-        console.log('WOOOOOOOOOONNNN....');
         containerTitle.html('You Won It.');
         disableUI();
     }else{

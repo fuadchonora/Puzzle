@@ -89,13 +89,13 @@ shufleTiles = () => {
 moveTile = (tile) => {
     tileNo = tile.html();
     let tempPos = tile.position();
-    // if( (tempPos.left+tempPos.top == freeTilePos.x+freeTilePos.y-100) || (tempPos.left+tempPos.top == freeTilePos.x+freeTilePos.y+100) ){
+    if( (tempPos.left+tempPos.top == freeTilePos.x+freeTilePos.y-100) || (tempPos.left+tempPos.top == freeTilePos.x+freeTilePos.y+100) ){
         disableUI();
         console.log('moving tile '+tileNo);
         document.getElementById("tile-"+tileNo).style.transform = "translate("+freeTilePos.x+"px, "+freeTilePos.y+"px)";
         freeTilePos.x = tempPos.left;
         freeTilePos.y = tempPos.top;
-    // }
+    }
     setTimeout(function(){
         checkStatus();
     },500);
